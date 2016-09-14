@@ -32,7 +32,7 @@ $mypwd = ConvertTo-SecureString -String $password -Force –AsPlainText
 $Importing = Import-PfxCertificate -FilePath $CertificatePath -CertStoreLocation Cert:\LocalMachine\My\ -Password $mypwd -Exportable
 
 $Thumbprint = $Importing.Thumbprint
-$SubjectName = $Importing.SubjectName.Name.Split(",")[0].split("=")
+$SubjectName = $Importing.SubjectName.Name.Split(",")[0].split("=")[1]
 
 #Create WinRM Https Listener
 $WinrmCreate = "winrm create --% winrm/config/Listener?Address=*+Transport=HTTPS @{Hostname=`"$SubjectName`";CertificateThumbprint=`"$Thumbprint`"}"
