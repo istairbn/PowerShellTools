@@ -34,6 +34,13 @@ $Importing = Import-PfxCertificate -FilePath $CertificatePath -CertStoreLocation
 $Thumbprint = $Importing.Thumbprint
 $SubjectName = $Importing.SubjectName.Name.Split(",")[0].split("=")[1]
 
+$WhoAmI = "$env:COMPUTERNAME.$Env:USERDNSDOMAIN"
+
+If($WhoAmI -notmatch $SubjectName){
+    Write-Error "$WhoAmI does not match $SubjectName"
+    Exit 1
+}
+
 #Create WinRM Https Listener
 $WinrmCreate = "winrm create --% winrm/config/Listener?Address=*+Transport=HTTPS @{Hostname=`"$SubjectName`";CertificateThumbprint=`"$Thumbprint`"}"
 Invoke-Expression $WinrmCreate
