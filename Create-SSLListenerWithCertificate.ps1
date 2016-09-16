@@ -1,4 +1,4 @@
-[CmdletBinding(SupportsShouldProcess=$True)]
+﻿[CmdletBinding(SupportsShouldProcess=$True)]
 <#
     .Synopsis
     Given a PFX file, will import the certificate and create an HTTPS listener
