@@ -7,10 +7,10 @@
     This script takes an existing CNAME record and replaces sets a new IP address. Designed for use in DR scenarios
     
     .Parameter DNSServer
-    The DNS Server you are amending. Current set: "BXTS111D31"
+    The DNS Server you are amending. 
 
     .Parameter DNSZone
-    The DNS Zone you are amending. Current set: "eu.rabodev.com","eu.rabonet.com"
+    The DNS Zone you are amending. 
 
     .Parameter recordName
     The DNS Alias you are amending
@@ -22,17 +22,15 @@
     The IP address you are linking to the record
 
     .Example
-    Switch-DNSRecords -DNSServer BXTS111D31 -DNSZone eu.rabodev.com -recordName MyDnsAlias -recordType CNAME -recordAddress 127.0.0.1
+    Switch-DNSRecords -DNSServer ADNSServer -DNSZone ADNSZone -recordName MyDnsAlias -recordType CNAME -recordAddress 127.0.0.1
 #>
     [CmdletBinding(SupportsShouldProcess=$True)]
     Param(
         [Parameter(Mandatory=$False)]
-        [ValidateSet("BXTS111D31")]
         [string]
 	    $DNSServer = "BXTS111D31",
 
         [Parameter(Mandatory=$True)]
-        [ValidateSet("eu.rabodev.com","eu.rabonet.com")]
         [string]
 	    $DNSZone = "eu.rabodev.com",
 
