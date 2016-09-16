@@ -28,11 +28,11 @@
     Param(
         [Parameter(Mandatory=$False)]
         [string]
-	    $DNSServer = "BXTS111D31",
+	    $DNSServer,
 
         [Parameter(Mandatory=$True)]
         [string]
-	    $DNSZone = "eu.rabodev.com",
+	    $DNSZone,
 
         [Parameter(Mandatory=$True)]
         [string]
